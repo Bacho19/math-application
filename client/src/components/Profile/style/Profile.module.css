@@ -1,0 +1,38 @@
+.wrapper {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+}
+
+.info__img {
+    margin-right: 50px;
+}
+
+.info__text {
+    margin-top: 40px;
+}
+
+.info__text__item {
+    font-size: 20px;
+}
+
+.info__text__span {
+    color: #455a64;
+    /*color: #fff;*/
+    font-size: 22px;
+    margin-right: 7px;
+    font-weight: bold;
+    padding: 2px;
+}
+
+.info__text__span__admin {
+    background-color: #455a64;
+    color: #fff;
+    font-size: 22px;
+    margin-right: 7px;
+    font-weight: bold;
+    padding: 2px;
+}

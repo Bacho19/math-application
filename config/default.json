@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "jwtSecret": "math-application-secret",
+  "mongoUri": "mongodb+srv://bacho:bachobtu1570@cluster0.klxtq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}

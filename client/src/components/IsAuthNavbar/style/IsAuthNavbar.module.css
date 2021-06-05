@@ -1,0 +1,55 @@
+.navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 52px;
+    color: #455A64;
+}
+
+.menu {
+    display: flex;
+    margin-left: 70px;
+}
+
+.li {
+    margin-right: 40px;
+    list-style: none;
+}
+
+.item {
+    list-style: none;
+    color: #bababa;
+    transition: 0.3s ease;
+    text-decoration: none;
+}
+
+.item:last-child {
+    margin-right: 0;
+}
+
+.item:hover {
+    color: #455A64;
+}
+
+.btn {
+    padding: 7px 17px;
+    background: #5ED6C7;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background: #37bfaf;
+}
+
+.active__item {
+    color: #455A64;
+}
