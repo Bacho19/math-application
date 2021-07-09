@@ -3,10 +3,11 @@ const bcrypt = require('bcryptjs')
 const { check, validationResult } = require('express-validator')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
-const config = require('config')
 const crypto = require('crypto')
 const nodemailer = require('nodemailer')
 const auth = require('../middleware/auth.middleware')
+require('dotenv').config()
+
 const router = Router()
 
 // /api/auth/register
@@ -163,9 +164,14 @@ router.post(
           .json({ message: 'Invalid username or password, please try again' })
       }
 
-      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'))
+      const token = jwt.sign({ userId: user.id }, process.env.jwtSecret)
 
-      res.json({ token, userId: user.id })
+      res.json(
+        { token, userId: user.id },
+        {
+          expiresIn: '2h',
+        }
+      )
     } catch (e) {
       res
         .status(500)
@@ -182,7 +188,7 @@ router.get('/get-user', auth, async (req, res) => {
       return res.status(401).json({ message: 'No authorization' })
     }
 
-    const decoded = jwt.verify(token, config.get('jwtSecret'))
+    const decoded = jwt.verify(token, process.env.jwtSecret)
     let user = await User.findById(decoded.userId)
     res.json(user)
   } catch (e) {
