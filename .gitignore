@@ -1,5 +1,6 @@
 .env
 
+/.idea
 /node_modules
 
-/client
+/client/node_modules

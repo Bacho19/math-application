@@ -64,8 +64,8 @@ router.post(
         port: 587, // 587
         secure: false, // true for 465, false for other ports
         auth: {
-          user: 'mathmath4242@gmail.com', // generated ethereal user
-          pass: 'application123', // generated ethereal password
+          user: 'mirian.akhalaia.1@gmail.com', // generated ethereal user
+          pass: process.env.email_pass, // generated ethereal password
         },
         requireTLS: true,
         tls: {
@@ -88,7 +88,7 @@ router.post(
                 <p style="font-size: 18px">Thank you for registering on the site.</p>
                 <p style="font-size: 18px">Click on the link below to verify your account.</p>
                 <a href="http://localhost:3000/verify-email/${user.emailToken}">Account Verification</a>
-            `, // ${req.headers.host}
+            `,
       }
 
       await transporter.sendMail(msgInfo, (error, info) => {
@@ -164,14 +164,9 @@ router.post(
           .json({ message: 'Invalid username or password, please try again' })
       }
 
-      const token = jwt.sign({ userId: user.id }, process.env.jwtSecret)
+      const token = jwt.sign({ userId: user.id }, process.env.jwtSecret, {expiresIn: '2h'})
 
-      res.json(
-        { token, userId: user.id },
-        {
-          expiresIn: '2h',
-        }
-      )
+      res.json({ token, userId: user.id })
     } catch (e) {
       res
         .status(500)
